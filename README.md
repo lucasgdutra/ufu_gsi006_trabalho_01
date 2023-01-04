@@ -1,7 +1,7 @@
 # Trabalho Prático - Estruturas de Dados 1
 
 ## Instruções para desenvolvimento do trabalho
-Instruções sobre como o trabalho deve ser feito estão em [orientações.md](./orientacoes.md)
+Instruções sobre como o trabalho deve ser feito estão em [orientações.md](./doc/orientacoes.md)
 
 ## Etapas de desenvolvimento
 ### Criação de TAD´s
