@@ -1,3 +1,4 @@
-.vscode
+.vscode/
+.clang-format
 bin
 obj
