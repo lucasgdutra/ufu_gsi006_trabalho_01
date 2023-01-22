@@ -1,9 +1,11 @@
+SHELL := /bin/bash
 CC = gcc
 APPS=./apps
 BIN=./bin
 INCLUDE=./include
 OBJ=./obj
 SRC=./src
+TEST=./test
 CFLAGS+=-O3 -Wall -Wextra -lm -I $(INCLUDE)
 
 all:	prepare compile_tads compile_app
@@ -29,11 +31,25 @@ $(BIN)/%:	$(APPS)/%.c
 run:	
 	$(BIN)/restaurante
 
+compile_test:	all\
+	$(TEST)/lista.test
+	
+$(TEST)/%.test:	$(TEST)/%.c
+	$(CC) $(CFLAGS) $< $(OBJ)/*.o -o $@ 
+
+test:	$(TEST)/lista.run_test
+
+$(TEST)/%.run_test:	compile_test $(TEST)/%.test $(TEST)/%.in $(TEST)/%.out
+	-diff <($(word 2,$^) < $(word 3,$^))  $(word 4,$^)
+
 clean:	
-	rm -rf $(BIN)/* $(OBJ)/*
+	rm -rf $(BIN)/* $(OBJ)/* $(TEST)/*.test
 
 clean_app:
 	rm -rf $(BIN)/*
+
+clean_test:
+	rm -rf $(TEST)/*.test
 
 prepare:
 	mkdir -p bin obj
