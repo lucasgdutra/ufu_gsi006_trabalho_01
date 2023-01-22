@@ -2,3 +2,4 @@
 .clang-format
 bin
 obj
+test/*.test
