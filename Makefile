@@ -6,7 +6,7 @@ OBJ=./obj
 SRC=./src
 CFLAGS+=-O3 -Wall -Wextra -lm -I $(INCLUDE)
 
-all:	compile_tads compile_app
+all:	prepare compile_tads compile_app
 
 compile_tads:	$(OBJ)/cardapio.o\
 	$(OBJ)/chocolate.o\
@@ -34,3 +34,6 @@ clean:
 
 clean_app:
 	rm -rf $(BIN)/*
+
+prepare:
+	mkdir -p bin obj
