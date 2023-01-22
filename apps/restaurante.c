@@ -15,18 +15,7 @@
 
 int main()
 {
-    Fila f;
-    int valor;
-    inicializa_fila(&f, sizeof(int));
-    for (int i = 0; i < 10; i++)
-    {
-        adiciona_final_fila(&f, &i);
-    }
-    for (int i = 0; i < 10; i++)
-    {
-        remove_inicio_fila(&f, &valor);
-        printf("%d\n", valor);
-    }
+    
 
     return 0;
 }
