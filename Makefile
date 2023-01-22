@@ -8,7 +8,7 @@ SRC=./src
 TEST=./test
 CFLAGS+=-O3 -Wall -Wextra -lm -I $(INCLUDE)
 
-all:	prepare compile_tads compile_app
+all:	prepare compile_tads compile_app compile_test
 
 compile_tads:	$(OBJ)/cardapio.o\
 	$(OBJ)/chocolate.o\
@@ -34,7 +34,8 @@ run:
 compile_test:	all\
 	$(TEST)/lista.test\
 	$(TEST)/fila.test\
-	$(TEST)/pilha.test
+	$(TEST)/pilha.test\
+	$(TEST)/produto.test
 	
 $(TEST)/%.test:	$(TEST)/%.c
 	$(CC) $(CFLAGS) $< $(OBJ)/*.o -o $@ 
@@ -42,6 +43,7 @@ $(TEST)/%.test:	$(TEST)/%.c
 test:	$(TEST)/lista.run_test\
 	$(TEST)/fila.run_test\
 	$(TEST)/pilha.run_test\
+	$(TEST)/produto.run_test
 
 $(TEST)/%.run_test:	compile_test $(TEST)/%.test $(TEST)/%.in $(TEST)/%.out
 	-diff <($(word 2,$^) < $(word 3,$^))  $(word 4,$^)
