@@ -27,7 +27,7 @@ $(BIN)/%:	$(APPS)/%.c
 
 
 run:	
-	$(BIN)/app
+	$(BIN)/restaurante
 
 clean:	
 	rm -rf $(BIN)/* $(OBJ)/*
