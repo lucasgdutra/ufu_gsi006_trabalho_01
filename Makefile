@@ -32,12 +32,14 @@ run:
 	$(BIN)/restaurante
 
 compile_test:	all\
-	$(TEST)/lista.test
+	$(TEST)/lista.test\
+	$(TEST)/fila.test
 	
 $(TEST)/%.test:	$(TEST)/%.c
 	$(CC) $(CFLAGS) $< $(OBJ)/*.o -o $@ 
 
-test:	$(TEST)/lista.run_test
+test:	$(TEST)/lista.run_test\
+	$(TEST)/fila.run_test
 
 $(TEST)/%.run_test:	compile_test $(TEST)/%.test $(TEST)/%.in $(TEST)/%.out
 	-diff <($(word 2,$^) < $(word 3,$^))  $(word 4,$^)
