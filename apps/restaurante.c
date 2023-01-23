@@ -49,6 +49,26 @@ int incluir_clientes_fila() {
     return 0;
 }
 
+int atender_cliente() {
+    printf("em desenvolvimento..\n");
+    return 0;
+}
+
+int imprimir_cardapio() {
+    printf("em desenvolvimento..\n");
+    return 0;
+}
+
+int imprimir_pilha_chocolates() {
+    printf("em desenvolvimento..\n");
+    return 0;
+}
+
+int imprimir_fila_clientes() {
+    printf("em desenvolvimento..\n");
+    return 0;
+}
+
 int print_menu(int *opcao) {
     printf("\n");
     printf("Escolha uma das opções do menu\n");
@@ -56,6 +76,10 @@ int print_menu(int *opcao) {
     printf("1 - Inserir itens no cardapio\n");
     printf("2 - Inserir chocolates na pilha\n");
     printf("3 - Incluir clientes na fila\n");
+    printf("4 - Atender cliente na fila\n");
+    printf("5 - Imprimir cardapio\n");
+    printf("6 - Imprimir pilha de chocolates\n");
+    printf("7 - Imprimir fila de clientes\n");
     if (scanf("%d", opcao) == 1)
         return 0;
     return 1;
@@ -81,6 +105,18 @@ int main() {
             break;
         case 3:
             incluir_clientes_fila();
+            break;
+        case 4:
+            atender_cliente();
+            break;
+        case 5:
+            imprimir_cardapio();
+            break;
+        case 6:
+            imprimir_pilha_chocolates();
+            break;
+        case 7:
+            imprimir_fila_clientes();
             break;
         default:
             printf("Opcao invalida\n");
