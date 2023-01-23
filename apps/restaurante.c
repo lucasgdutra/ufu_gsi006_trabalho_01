@@ -12,6 +12,7 @@ disciplina Estrutura de dados (GSI006) BSI - Facom - UFU Restricoes:
 #include "../include/fila.h"
 #include "../include/lista.h"
 #include "../include/pilha.h"
+#include "../include/chocolate.h"
 #include "../include/produto.h"
 #include <stdbool.h>
 #include <stdio.h>
@@ -23,14 +24,27 @@ int inserir_itens_cardapio() {
 }
 
 int inserir_chocolates_pilha() {
-    printf("Em desenvolvimento\n");
+
+    char *nome;
+
+    nome = (char *)malloc(sizeof(char));
+    if(nome == NULL){
+        printf("nao foi alocado..\n");
+    }
+
+    printf("Insira o chocolate: \n");
+    scanf("%s", nome);
+
+    empilha_chocolate(nome);
+
     return 0;
 }
 
-int incluir_clientes_fila() {
-    printf("Em desenvolvimento\n");
-    return 0;
+int incluir_clientes_fila(){
+
+    printf("em desenvolvimento..\n");
 }
+
 
 int print_menu(int *opcao) {
 	printf("\n");
