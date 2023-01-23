@@ -9,10 +9,10 @@ disciplina Estrutura de dados (GSI006) BSI - Facom - UFU Restricoes:
 ----------------------------------------------------------------------------------------*/
 
 #include "../include/cardapio.h"
+#include "../include/chocolate.h"
 #include "../include/fila.h"
 #include "../include/lista.h"
 #include "../include/pilha.h"
-#include "../include/chocolate.h"
 #include "../include/produto.h"
 #include <stdbool.h>
 #include <stdio.h>
@@ -27,37 +27,38 @@ int inserir_chocolates_pilha(Pilha_Chocolate *pc) {
     Chocolate c;
     char *nome;
     int tamanho_nome = 15;
-    
+
     nome = (char *)malloc(sizeof(char) * tamanho_nome);
-    if(nome == NULL){
+    if (nome == NULL) {
         printf("nao foi alocado..\n");
         return 1;
     }
 
     printf("Insira o chocolate: \n");
-    scanf("%s", nome);
+    if (scanf("%s", nome) != 1)
+        return 1;
 
     inicializa_chocolate(&c, nome, tamanho_nome);
-    empilha_chocolate(&pc, &c);
+    empilha_chocolate(pc, &c);
 
     return 0;
 }
 
-int incluir_clientes_fila(){
+int incluir_clientes_fila() {
     printf("em desenvolvimento..\n");
     return 0;
 }
 
-
 int print_menu(int *opcao) {
-	printf("\n");
+    printf("\n");
     printf("Escolha uma das opções do menu\n");
     printf("0 - Sair do programa\n");
     printf("1 - Inserir itens no cardapio\n");
     printf("2 - Inserir chocolates na pilha\n");
     printf("3 - Incluir clientes na fila\n");
-    if(scanf("%d", opcao) == 1) return 0;
-	return 1;
+    if (scanf("%d", opcao) == 1)
+        return 0;
+    return 1;
 }
 
 int main() {
