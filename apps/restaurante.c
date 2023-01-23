@@ -23,26 +23,29 @@ int inserir_itens_cardapio() {
     return 0;
 }
 
-int inserir_chocolates_pilha() {
-
+int inserir_chocolates_pilha(Pilha_Chocolate *pc) {
+    Chocolate c;
     char *nome;
-
-    nome = (char *)malloc(sizeof(char));
+    int tamanho_nome = 15;
+    
+    nome = (char *)malloc(sizeof(char) * tamanho_nome);
     if(nome == NULL){
         printf("nao foi alocado..\n");
+        return 1;
     }
 
     printf("Insira o chocolate: \n");
     scanf("%s", nome);
 
-    empilha_chocolate(nome);
+    inicializa_chocolate(&c, nome, tamanho_nome);
+    empilha_chocolate(&pc, &c);
 
     return 0;
 }
 
 int incluir_clientes_fila(){
-
     printf("em desenvolvimento..\n");
+    return 0;
 }
 
 
@@ -57,21 +60,23 @@ int print_menu(int *opcao) {
 	return 1;
 }
 
-int menu() {
-    int opcao;
+int main() {
+    Pilha_Chocolate pc;
+    inicializa_pilha_chocolate(&pc);
 
+    int opcao;
     while (true) {
         print_menu(&opcao);
         switch (opcao) {
         case 0:
-			printf("saindo...\n");
+            printf("saindo...\n");
             return 0;
             break;
         case 1:
             inserir_itens_cardapio();
             break;
         case 2:
-            inserir_chocolates_pilha();
+            inserir_chocolates_pilha(&pc);
             break;
         case 3:
             incluir_clientes_fila();
@@ -81,10 +86,6 @@ int menu() {
             break;
         }
     }
-    return 0;
-}
 
-int main() {
-    menu();
     return 0;
 }
