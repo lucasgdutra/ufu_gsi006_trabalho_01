@@ -2,16 +2,17 @@
 #define CARDAPIO_H
 
 #include "./produto.h"
+#include "./lista.h"
 
 
 typedef struct cardapio{
-    Produto **lista;
-    int tam_cardapio;
-    int posicao_cardapio;
+    Lista_Ordenada *lista;
 } Cardapio;
 
-int inicializa_cardapio(Cardapio *c, int tam_lista);
+int inicializa_cardapio(Cardapio *c);
 
 int adiciona_item_cardapio(Cardapio *c, Produto *p);
+
+int remove_item_cardapio(Cardapio *c, Produto *retorno_produto, int id);
 
 #endif
