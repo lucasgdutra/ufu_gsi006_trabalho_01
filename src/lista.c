@@ -48,16 +48,16 @@ int adiciona_em_lista(Lista_Ordenada *l, void *dados, int pos) {
                 node_anterior->proximo_node = novo_node;
                 break;
             }
-            if (node_anterior == NULL && pos < node_atual->pos) {
-
+            else if (node_anterior == NULL) {
                 // inserir na primeira posição
-                l->primeiro = novo_node;
-
-                novo_node->proximo_node = node_atual;
-                break;
+                if (pos < node_atual->pos) {
+                    l->primeiro = novo_node;
+                    novo_node->proximo_node = node_atual;
+                    break;
+                }
             }
-            if (pos >= node_anterior->pos && pos < node_atual->pos) {
-
+            else if (pos >= node_anterior->pos && pos < node_atual->pos) {
+                //inserir no meio
                 node_anterior->proximo_node = novo_node;
 
                 novo_node->proximo_node = node_atual;
