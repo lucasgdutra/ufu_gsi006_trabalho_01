@@ -27,7 +27,6 @@ int inserir_chocolates_pilha(Pilha_Chocolate *pc) {
     Chocolate c;
     char *nome;
     int tamanho_nome = 15;
-    int status;
 
     nome = (char *)malloc(sizeof(char) * tamanho_nome);
     if (nome == NULL) {
@@ -39,14 +38,8 @@ int inserir_chocolates_pilha(Pilha_Chocolate *pc) {
     if (scanf("%s", nome) != 1)
         return 1;
 
-    status = inicializa_chocolate(&c, nome, tamanho_nome);
-    if (status != 0) {
-        return 1;
-    }
-    status = empilha_chocolate(pc, &c);
-    if (status != 0) {
-        return 1;
-    }
+    inicializa_chocolate(&c, nome, tamanho_nome);
+    empilha_chocolate(pc, &c);
 
     return 0;
 }
@@ -66,23 +59,6 @@ int imprimir_cardapio() {
     return 0;
 }
 
-int imprimir_pilha_chocolates(Pilha_Chocolate *pc) {
-    Node_Pilha *node;
-    if (pc->pilha->topo == NULL) {
-        printf("Nao existem chocolates na pilha\n");
-        return 1;
-    }
-    node = pc->pilha->topo;
-    while (true) {
-        if (node == NULL) {
-            break;
-        }
-        Chocolate *c = (Chocolate *)node->dados;
-        printf("%s\n", c->nome);
-        node = node->proximo_node;
-    }
-    return 0;
-}
 
 int imprimir_fila_clientes() {
     printf("em desenvolvimento..\n");
@@ -107,6 +83,7 @@ int print_menu(int *opcao) {
 
 int main() {
     Pilha_Chocolate pc;
+
     inicializa_pilha_chocolate(&pc);
 
     int opcao;
@@ -133,7 +110,7 @@ int main() {
             imprimir_cardapio();
             break;
         case 6:
-            imprimir_pilha_chocolates(&pc);
+            imprime_chocolate(&pc);
             break;
         case 7:
             imprimir_fila_clientes();
