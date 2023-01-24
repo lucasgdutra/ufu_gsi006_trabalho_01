@@ -6,7 +6,7 @@ INCLUDE=./include
 OBJ=./obj
 SRC=./src
 TEST=./test
-CFLAGS+=-O3 -Wall -Wextra -lm -I $(INCLUDE)
+CFLAGS+=-O0 -Wall -Wextra -lm -I $(INCLUDE) -ggdb -g3 
 
 all:	prepare compile_tads compile_app compile_test
 
