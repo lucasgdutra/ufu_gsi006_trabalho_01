@@ -84,6 +84,7 @@ int print_menu(int *opcao) {
 int main() {
     Pilha_Chocolate pc;
 
+    printf("teste..\n");
     inicializa_pilha_chocolate(&pc);
 
     int opcao;
