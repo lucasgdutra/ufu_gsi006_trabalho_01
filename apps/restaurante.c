@@ -72,15 +72,17 @@ int incluir_clientes_fila() {
     return 0;
 }
 
-int atender_cliente(Cardapio *c) {
+int atender_cliente() {
     
-    mostrar_cardapio(c);
+    printf("em desenvolvimento..\n");   
 
     return 0;
 }
 
-int imprimir_cardapio() {
-    printf("em desenvolvimento..\n");
+int imprimir_cardapio(Cardapio *c) {
+    
+    mostrar_cardapio(c);
+
     return 0;
 }
 
@@ -132,10 +134,10 @@ int main() {
             incluir_clientes_fila();
             break;
         case 4:
-            atender_cliente(&c);
+            atender_cliente();
             break;
         case 5:
-            imprimir_cardapio();
+            imprimir_cardapio(&c);
             break;
         case 6:
             imprime_chocolate(&pc);
