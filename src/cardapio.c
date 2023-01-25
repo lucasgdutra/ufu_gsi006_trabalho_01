@@ -23,3 +23,13 @@ int remove_item_cardapio(Cardapio *c, Produto *retorno_produto, int id) {
         return 1;
     return 0;
 }
+
+void mostrar_cardapio(Cardapio *c) {
+    Produto p;
+    Node_Lista *node_atual = c->lista->primeiro;
+    while (node_atual != NULL) {
+        memcpy(&p, node_atual->dados, c->lista->tamanho_estrutura_dados);
+        printf("ID: %d, Nome: %s, Preco: %.2f\n", p.id, p.nome, p.preco);
+        node_atual = node_atual->proximo_node;
+    }
+}
