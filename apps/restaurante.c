@@ -18,10 +18,16 @@ disciplina Estrutura de dados (GSI006) BSI - Facom - UFU Restricoes:
 #include <stdio.h>
 #include <stdlib.h>
 
-int inserir_itens_cardapio(Cardapio *c, Produto *p) {
-    int id, tam_nome = 15;
+int inserir_itens_cardapio(Cardapio *c) {
+    int id, tam_nome = 15, status;
     char *nome;
     float preco;
+    Produto *p;
+    p = (Produto*)malloc(sizeof(Produto));
+    if(p == NULL){
+        printf("Erro ao alocar produto em funcao inserir_itens_cardapio\n");
+        return 1;
+    }
 
     printf("ID do produto: \n");
     scanf("%d", &id);
@@ -38,9 +44,17 @@ int inserir_itens_cardapio(Cardapio *c, Produto *p) {
     printf("Preco produto: \n");
     scanf("%f", &preco);
 
-    inicializa_produto(p, id, nome,tam_nome,preco);
+    status = inicializa_produto(p, id, nome,tam_nome,preco);
+    if(status != 0){
+        printf("Erro em inicializa_produto em funcao inserir_itens_cardapio");
+        return 1;
+    }
 
-    adiciona_item_cardapio(c,p);
+    status = adiciona_item_cardapio(c,p);
+    if(status != 0){
+        printf("Erro adiciona_item_cardapio em funcao inserir_itens_cardapio");
+        return 1;
+    }
     printf("item inserido no cardapio..\n");
 
     return 0;
@@ -110,7 +124,6 @@ int print_menu(int *opcao) {
 
 int main() {
     Pilha_Chocolate pc;
-    Produto p;
     Cardapio c;
 
     inicializa_pilha_chocolate(&pc);
@@ -125,7 +138,7 @@ int main() {
             return 0;
             break;
         case 1:
-            inserir_itens_cardapio(&c, &p);
+            inserir_itens_cardapio(&c);
             break;
         case 2:
             inserir_chocolates_pilha(&pc);

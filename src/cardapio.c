@@ -1,6 +1,7 @@
 #include "../include/cardapio.h"
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 int inicializa_cardapio(Cardapio *c) {
     Lista_Ordenada *l;
