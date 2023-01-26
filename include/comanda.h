@@ -2,12 +2,18 @@
 #define COMANDA_H
 
 #include "./produto.h"
+#include "./lista.h"
 
 typedef struct comanda
 {
     Produto *lista;
 } Comanda;
 
+
+
+int inicializa_comanda(Comanda *comanda);
+
+int adiciona_item_comanda(Comanda *comanda, Produto *p);
 
 
 
