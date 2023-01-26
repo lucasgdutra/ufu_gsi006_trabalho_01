@@ -7,6 +7,29 @@
    Disciplina: Estrutura de Dados 1
    Data da ultima atualizacao: 04/01/2023
 ----------------------------------------------------------------------------------------*/
-#include "../include/comanda.h"
 
+#include "../include/comanda.h"
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+
+int inicializa_comanda(Comanda *comanda){
+
+    Lista_Ordenada *l;
+    l = (Lista_Ordenada*)malloc(sizeof(Lista_Ordenada));
+    inicializa_lista(l, sizeof(Produto));
+    comanda->lista = l;
+    return 0;
+
+}
+
+int adiciona_item_comanda(Comanda *comanda, Produto *p)
+{
+
+    int status = adiciona_em_lista(comanda->lista, p, p->id);
+    if (status != 0)
+       return 1;
+
+    return 0;
+}
 
