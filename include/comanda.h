@@ -6,7 +6,7 @@
 
 typedef struct comanda
 {
-    Produto *lista;
+    Lista_Ordenada *lista;
 } Comanda;
 
 
