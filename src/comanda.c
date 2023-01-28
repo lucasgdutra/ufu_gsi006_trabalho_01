@@ -33,3 +33,15 @@ int adiciona_item_comanda(Comanda *comanda, Produto *p)
     return 0;
 }
 
+int soma_valor_comanda(Comanda *comanda, float *resultado) {
+    Node_Lista *no = comanda->lista->primeiro;
+    float soma = 0;
+    while (no != NULL) {
+        Produto *p = (Produto*)no->dados;
+        soma += p->preco;
+        no = no->proximo_node;
+    }
+    *resultado = soma;
+    return 0;
+}
+
