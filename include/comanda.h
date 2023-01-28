@@ -15,6 +15,7 @@ int inicializa_comanda(Comanda *comanda);
 
 int adiciona_item_comanda(Comanda *comanda, Produto *p);
 
+int soma_valor_comanda(Comanda *comanda, float *resultado);
 
 
 #endif
