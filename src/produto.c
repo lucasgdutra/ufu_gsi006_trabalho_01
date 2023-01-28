@@ -10,7 +10,7 @@ int inicializa_produto(Produto *p, int id, char *nome, int tam_nome, float preco
     memcpy(p->nome, nome, p->tam_nome);
 
     p->preco = preco;
-    
+
     return 0;
 }
 

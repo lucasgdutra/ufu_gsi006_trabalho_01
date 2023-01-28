@@ -13,7 +13,7 @@ int main() {
         if (s == 1)
             return 1;
     }
-    
+
     while (l.tamanho_lista > 0) {
 
         if (l.primeiro != NULL) {

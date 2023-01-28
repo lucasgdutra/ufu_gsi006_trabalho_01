@@ -17,7 +17,7 @@ int main() {
     while(c.lista->tamanho_lista != 0){
         Produto  produtoRetorno;
         remove_item_cardapio(&c, &produtoRetorno, c.lista->primeiro->pos);
-        
+
         int id_retorno;
         retorna_id_produto(&produtoRetorno, &id_retorno);
 

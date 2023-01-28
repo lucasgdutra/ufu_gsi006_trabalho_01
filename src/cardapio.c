@@ -27,7 +27,7 @@ int remove_item_cardapio(Cardapio *c, Produto *retorno_produto, int id) {
 
 void mostrar_cardapio(Cardapio *c) {
 
-    // verifica se está vazio o cardapio..  
+    // verifica se está vazio o cardapio..
     if(c->lista->tamanho_lista == 0){
         printf("está vazia..\n");
     }

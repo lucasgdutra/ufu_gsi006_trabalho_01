@@ -34,7 +34,7 @@ int empilha(Pilha *p, void *dados)
 
     // insere node no topo da pilha
     p->topo = novo_node;
-    
+
     // ajusta tamanho da pilha
     p->tamanho_pilha++;
     return 0;
@@ -56,7 +56,7 @@ int desempilha(Pilha *p, void *valor)
         // redefine topo da pilha
         //
         p->topo = p->topo->proximo_node;
-        
+
 
         // ajusta tamanho da pilha
         p->tamanho_pilha--;

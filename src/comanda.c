@@ -1,7 +1,7 @@
 /* --------------------------------------------------------------------------------------
    Comanda
    Objetivo: Trabalho de disciplina Estrutura de dados (GSI006) BSI - Facom - UFU
-   Restricoes: 
+   Restricoes:
 
    Autor: Dalmo Scalon Inacio/ Lucas Gabriel Dutra de Souza
    Disciplina: Estrutura de Dados 1

@@ -49,12 +49,12 @@ int remove_inicio_fila(Fila *f, void *valor){
     if(f->tamanho_fila > 0){
         //guarda endereço do node que vai ser removido
         Node_Fila *node_removido = f->primeiro;
-        
+
         //copia dados do node removido para ponteiro valor em argumento da função, se valor for NULL continua funcao sem copiar dados
         if(valor != NULL){
             memcpy(valor,node_removido->dados,f->tamanho_estrutura_dados);
         }
-        
+
         //redefine primeiro node da lista
         if(f->tamanho_fila > 1){
             f->primeiro = f->primeiro->proximo_node;
