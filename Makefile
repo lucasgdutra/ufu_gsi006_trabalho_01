@@ -6,7 +6,7 @@ INCLUDE=./include
 OBJ=./obj
 SRC=./src
 TEST=./test
-CFLAGS+=-O0 -Wall -Wextra -lm -I $(INCLUDE) -ggdb -g3 
+CFLAGS+=-O0 -Wall -Wextra -lm -I $(INCLUDE) -ggdb -g3
 
 all:	prepare compile_tads compile_app compile_test
 
@@ -16,19 +16,20 @@ compile_tads:	$(OBJ)/cardapio.o\
 	$(OBJ)/fila.o\
 	$(OBJ)/lista.o\
 	$(OBJ)/pilha.o\
-	$(OBJ)/produto.o
+	$(OBJ)/produto.o\
+	$(OBJ)/cliente.o
 
 $(OBJ)/%.o:	$(SRC)/%.c $(INCLUDE)/%.h
-	$(CC) $(CFLAGS) -c $< -o $@ 
+	$(CC) $(CFLAGS) -c $< -o $@
 
 compile_app:	clean_app\
 	$(BIN)/restaurante
 
 $(BIN)/%:	$(APPS)/%.c
-	$(CC) $(CFLAGS) $< $(OBJ)/*.o -o $@ 
+	$(CC) $(CFLAGS) $< $(OBJ)/*.o -o $@
 
 
-run:	
+run:
 	$(BIN)/restaurante
 
 compile_test:	all\
@@ -37,9 +38,9 @@ compile_test:	all\
 	$(TEST)/pilha.test\
 	$(TEST)/produto.test\
 	$(TEST)/cardapio.test
-	
+
 $(TEST)/%.test:	$(TEST)/%.c
-	$(CC) $(CFLAGS) $< $(OBJ)/*.o -o $@ 
+	$(CC) $(CFLAGS) $< $(OBJ)/*.o -o $@
 
 test:	$(TEST)/lista.run_test\
 	$(TEST)/fila.run_test\
@@ -50,7 +51,7 @@ test:	$(TEST)/lista.run_test\
 $(TEST)/%.run_test:	compile_test $(TEST)/%.test $(TEST)/%.in $(TEST)/%.out
 	-diff <($(word 2,$^) < $(word 3,$^))  $(word 4,$^)
 
-clean:	
+clean:
 	rm -rf $(BIN)/* $(OBJ)/* $(TEST)/*.test
 
 clean_app:
