@@ -46,7 +46,7 @@ int leitura_produto(Produto *produto_retorno) {
 
 	status = inicializa_produto(produto_retorno, id, nome, tam_nome, preco);
 	if (status != 0) {
-		printf("Erro em inicializa_produto em funcao inserir_itens_cardapio");
+		printf("Erro em inicializa_produto em funcao inserir_itens_cardapio\n");
 		return 1;
 	}
 
@@ -70,7 +70,8 @@ int inserir_itens_cardapio(Cardapio *cardapio) {
 
 	status = adiciona_item_cardapio(cardapio, produto);
 	if (status != 0) {
-		printf("Erro adiciona_item_cardapio em funcao inserir_itens_cardapio");
+		printf(
+			"Erro adiciona_item_cardapio em funcao inserir_itens_cardapio\n");
 		return 1;
 	}
 	printf("item inserido no cardapio..\n");
@@ -102,13 +103,14 @@ int inserir_chocolates_pilha(Pilha_Chocolate *pilha_chocolate) {
 
 	status = inicializa_chocolate(chocolate, nome, tamanho_nome);
 	if (status != 0) {
-		printf(
-			"erro em inicializa_chocolate em funcao inserir_chocolates_pilha");
+		printf("erro em inicializa_chocolate em funcao "
+			   "inserir_chocolates_pilha\n");
 		return 1;
 	}
 	status = empilha_chocolate(pilha_chocolate, chocolate);
 	if (status != 0) {
-		printf("erro em empilha_chocolate em funcao inserir_chocolates_pilha");
+		printf(
+			"erro em empilha_chocolate em funcao inserir_chocolates_pilha\n");
 		return 1;
 	}
 	return 0;
@@ -125,12 +127,12 @@ int inserir_itens_comanda(Comanda *comanda) {
 
 	status = leitura_produto(produto);
 	if (status != 0) {
-		printf("Erro leitura_produto em funcao inserir_itens_comanda");
+		printf("Erro leitura_produto em funcao inserir_itens_comanda\n");
 		return 1;
 	}
 	status = adiciona_item_comanda(comanda, produto);
 	if (status != 0) {
-		printf("Erro adiciona_item_cardapio em funcao inserir_itens_comanda");
+		printf("Erro adiciona_item_cardapio em funcao inserir_itens_comanda\n");
 		return 1;
 	}
 	printf("item inserido na comanda..\n");
@@ -163,12 +165,12 @@ int incluir_clientes_fila(Fila_Cliente *fila_cliente) {
 
 	status = inicializa_comanda(comanda);
 	if (status != 0) {
-		printf("Erro inicializa_comanda em funcao incluir_clientes_fila");
+		printf("Erro inicializa_comanda em funcao incluir_clientes_fila\n");
 		return 1;
 	}
 	status = inserir_itens_comanda(comanda);
 	if (status != 0) {
-		printf("Erro inserir_itens_comanda em funcao incluir_clientes_fila");
+		printf("Erro inserir_itens_comanda em funcao incluir_clientes_fila\n");
 		return 1;
 	}
 	while (true) {
@@ -182,22 +184,22 @@ int incluir_clientes_fila(Fila_Cliente *fila_cliente) {
 		if (entrada == 1) {
 			status = inicializa_comanda(comanda);
 			if (status != 0) {
-				printf(
-					"Erro inicializa_comanda em funcao incluir_clientes_fila");
+				printf("Erro inicializa_comanda em funcao "
+					   "incluir_clientes_fila\n");
 				return 1;
 			}
 		} else {
-			printf("entrada invalida, entradas aceitas 0 ou 1");
+			printf("entrada invalida, entradas aceitas 0 ou 1\n");
 		}
 	}
 	status = inicializa_cliente(cliente, nome, tamanho_nome, comanda);
 	if (status != 0) {
-		printf("Erro inicializa_cliente em funcao incluir_clientes_fila");
+		printf("Erro inicializa_cliente em funcao incluir_clientes_fila\n");
 		return 1;
 	}
 	status = adiciona_cliente_fila(fila_cliente, cliente);
 	if (status != 0) {
-		printf("Erro adiciona_cliente_fila em funcao incluir_clientes_fila");
+		printf("Erro adiciona_cliente_fila em funcao incluir_clientes_fila\n");
 		return 1;
 	}
 	printf("cliente inserido na fila..\n");
