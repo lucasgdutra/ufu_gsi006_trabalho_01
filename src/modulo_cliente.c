@@ -1,5 +1,6 @@
 #include "../include/modulo_cliente.h"
 #include "../include/modulo_cardapio.h"
+#include "../include/modulo_chocolate.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -100,12 +101,44 @@ int incluir_clientes_fila(Fila_Cliente *fila_cliente, Cardapio *cardapio) {
 	return 0;
 }
 
-int atender_cliente(Fila_Cliente *fila_cliente) {
+int atender_cliente(Fila_Cliente *fila_cliente,
+					Pilha_Chocolate *pilha_chocolate) {
 	// testa se ponteiro eh valido
 	if (fila_cliente == NULL) {
+		printf("ponteiro fila_cliente invalido em funcao "
+			   "atender_cliente\n");
 		return 1;
 	}
-	printf("em desenvolvimento..\n");
+	int status;
+	if (fila_cliente->fila->tamanho_fila == 0) {
+		printf("fila de clientes vazia\n");
+		return 0;
+	}
+	Node_Fila *node_atual = fila_cliente->fila->primeiro;
+	if (node_atual == NULL) {
+		printf("erro ponteiro node_atual invalido em funcao "
+			   "atender_cliente\n");
+		return 1;
+	}
+	Cliente *cliente = (Cliente *)node_atual->dados;
+	Comanda *comanda = cliente->comanda;
+	float soma_comanda_cliente;
+	soma_valor_comanda(comanda, &soma_comanda_cliente);
+
+	printf("cliente nome: %s\n", cliente->nome);
+	printf("valor total comanda cliente: %f\n", soma_comanda_cliente);
+	if (pilha_chocolate != NULL) {
+		Chocolate *chocolate;
+		chocolate = (Chocolate *)malloc(sizeof(Chocolate));
+		status = desempilha_chocolate(pilha_chocolate, chocolate);
+		if (status != 0) {
+			printf("erro em desempilha_chocolate em funcao atender_cliente\n");
+			return 1;
+		}
+		printf("chocolate entregue ao cliente: %s\n", chocolate->nome);
+	} else {
+		printf("nao existem chocolates na pilha para entregar ao cliente\n");
+	}
 
 	return 0;
 }

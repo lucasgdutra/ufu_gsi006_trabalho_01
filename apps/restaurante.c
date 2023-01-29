@@ -73,7 +73,7 @@ int main() {
 
 			break;
 			case 4:
-				atender_cliente(&fila_cliente);
+				atender_cliente(&fila_cliente, &pilha_chocolate);
 				break;
 			case 5:
 				imprimir_cardapio(&cardapio);
