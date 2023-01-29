@@ -17,7 +17,10 @@ compile_tads:	$(OBJ)/cardapio.o\
 	$(OBJ)/lista.o\
 	$(OBJ)/pilha.o\
 	$(OBJ)/produto.o\
-	$(OBJ)/cliente.o
+	$(OBJ)/cliente.o\
+	$(OBJ)/modulo_cliente.o\
+	$(OBJ)/modulo_cardapio.o\
+	$(OBJ)/modulo_chocolate.o
 
 $(OBJ)/%.o:	$(SRC)/%.c $(INCLUDE)/%.h
 	$(CC) $(CFLAGS) -c $< -o $@

@@ -16,8 +16,6 @@ int remove_item_cardapio(Cardapio *cardapio, Produto *retorno_produto, int id);
 
 int retorna_tamanho_cardapio(Cardapio *cardapio, int *retorno_tamanho);
 
-int mostrar_cardapio(Cardapio *cardapio);
-
 int buscar_item_cardapio(Cardapio *cardapio, int posicao,
 						 Produto *retorno_produto);
 #endif

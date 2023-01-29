@@ -46,25 +46,6 @@ int retorna_tamanho_cardapio(Cardapio *cardapio, int *retorno_tamanho) {
 	return 0;
 }
 
-int mostrar_cardapio(Cardapio *cardapio) {
-	// testa se ponteiro eh valido
-	if (cardapio == NULL) {
-		return 1;
-	}
-	// verifica se está vazio o cardapio..
-	if (cardapio->lista->tamanho_lista == 0) {
-		printf("está vazia..\n");
-	}
-	Produto p;
-	Node_Lista *node_atual = cardapio->lista->primeiro;
-	while (node_atual != NULL) {
-		memcpy(&p, node_atual->dados, cardapio->lista->tamanho_estrutura_dados);
-		printf("ID: %d, Nome: %s, Preco: %.2f\n", p.id, p.nome, p.preco);
-		node_atual = node_atual->proximo_node;
-	}
-	return 0;
-}
-
 int buscar_item_cardapio(Cardapio *cardapio, int posicao,
 						 Produto *retorno_produto) {
 	// testa se ponteiro eh valido

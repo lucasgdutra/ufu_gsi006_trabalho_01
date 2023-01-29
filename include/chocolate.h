@@ -21,6 +21,4 @@ int empilha_chocolate(Pilha_Chocolate *pilha_chocolate, Chocolate *chocolate);
 int desempilha_chocolate(Pilha_Chocolate *pilha_chocolate,
 						 Chocolate *retorno_chocolate);
 
-int imprime_chocolate(Pilha_Chocolate *pilha_chocolate);
-
 #endif
