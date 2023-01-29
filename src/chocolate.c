@@ -19,8 +19,12 @@ int inicializa_pilha_chocolate(Pilha_Chocolate *pc) {
 		return 1;
 	}
 	Pilha *p;
+	int status;
 	p = malloc(sizeof(Pilha));
-	inicializa_pilha(p, sizeof(Chocolate));
+	status = inicializa_pilha(p, sizeof(Chocolate));
+	if (status != 0) {
+		return 1;
+	}
 	pc->pilha = p;
 	return 0;
 };
@@ -30,7 +34,11 @@ int empilha_chocolate(Pilha_Chocolate *pc, Chocolate *c) {
 	if (pc == NULL || c == NULL) {
 		return 1;
 	}
-	empilha(pc->pilha, c);
+	int status;
+	status = empilha(pc->pilha, c);
+	if (status != 0) {
+		return 1;
+	}
 	return 0;
 }
 
@@ -39,6 +47,10 @@ int desempilha_chocolate(Pilha_Chocolate *pc, Chocolate *choco_retorno) {
 	if (pc == NULL || choco_retorno == NULL) {
 		return 1;
 	}
-	desempilha(pc->pilha, choco_retorno);
+	int status;
+	status = desempilha(pc->pilha, choco_retorno);
+	if (status != 0) {
+		return 1;
+	}
 	return 0;
 }
