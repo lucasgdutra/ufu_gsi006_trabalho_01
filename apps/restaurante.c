@@ -8,6 +8,7 @@ disciplina Estrutura de dados (GSI006) BSI - Facom - UFU Restricoes:
    Data da ultima atualizacao: 04/01/2023
 ----------------------------------------------------------------------------------------*/
 
+#include "restaurante.h"
 #include "../include/cardapio.h"
 #include "../include/chocolate.h"
 #include "../include/cliente.h"
