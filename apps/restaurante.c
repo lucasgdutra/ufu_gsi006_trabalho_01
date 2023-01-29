@@ -249,9 +249,9 @@ int print_menu(int *opcao) {
 	printf("5 - Imprimir cardapio\n");
 	printf("6 - Imprimir pilha de chocolates\n");
 	printf("7 - Imprimir fila de clientes\n");
-	if (scanf("%d", opcao) == 1)
-		return 0;
-	return 1;
+	if (scanf("%d", opcao) != 1)
+		return 1;
+	return 0;
 }
 
 int main() {
