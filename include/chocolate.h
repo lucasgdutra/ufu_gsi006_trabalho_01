@@ -1,10 +1,21 @@
+/* --------------------------------------------------------------------------------------
+   Nesse arquivo temos o header da parte do chocolate, haja vista que teremos uma pilha
+   de chocolate que será distruibida como brinde no nosso restaurante. Portanto, é preciso 
+   que eu consiga ter uma pilha de chocolate e aloca-los nessa estrutura.
+   Objetivo: Trabalho da disciplina Estrutura de dados (GSI006) BSI - Facom -
+UFU Restricoes:
+
+   Autor: Dalmo Scalon Inacio/ Lucas Gabriel Dutra de Souza
+   Disciplina: Estrutura de Dados 1
+   Data da ultima atualizacao: 04/01/2023
+----------------------------------------------------------------------------------------*/
 #ifndef CHOCOLATE_H
 #define CHOCOLATE_H
 
 #include "./pilha.h"
 
 /*
-Struct chamada Chocolate, que contem um ponteiro pra char indicando nome e
+	Struct chamada Chocolate, que contem um ponteiro pra char indicando nome e
    um int indicando tamanho desse nome.
 */
 typedef struct chocolate {
