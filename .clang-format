@@ -1,7 +1,8 @@
+---
+Language: Cpp
 BasedOnStyle: LLVM
 UseTab: Always
 IndentWidth: 4
 TabWidth: 4
 AllowShortIfStatementsOnASingleLine: false
 IndentCaseLabels: true
-AlignAfterOpenBracket: BAS_Align 
