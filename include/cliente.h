@@ -29,8 +29,8 @@ typedef struct cliente {
  Nome: inicializa_cliente
  Entrada: Ponteiro para Cliente, ponteiro do tipo char indicando nome , int
  tam_nome e um ponteiro do tipo Comanda. Processo: testa validadade dos
- ponteiros, e aloca na struct Cliente, os valores passados. Saida: return 0 caso
- dê certo, e 1 caso dê errado.
+ ponteiros, e aloca na struct Cliente, os valores passados. 
+ Saida: return 0 caso dê certo, e 1 caso dê errado.
  */
 int inicializa_cliente(Cliente *c, char *nome, int tamanho_nome,
 					   Comanda *comanda);
@@ -46,7 +46,8 @@ typedef struct fila_cliente {
  Nome: inicializa_fila_cliente
  Entrada: Ponteiro do tipo Fila_Cliente
  Processo: Testa validade dos ponteiros, aloca a Fila e atribui a fila alocada
- para Fila_cliente. Saida: return 0 caso dê certo, e 1 caso dê errado.
+ para Fila_cliente. 
+ Saida: return 0 caso dê certo, e 1 caso dê errado.
  */
 int inicializa_fila_cliente(Fila_Cliente *fc);
 
@@ -54,7 +55,8 @@ int inicializa_fila_cliente(Fila_Cliente *fc);
  Nome: adiciona_cliente_fila
  Entrada: Ponteiro do tipo Fila_Cliente e um ponteiro do tipo Cliente.
  Processo: Testa validade dos ponteiros,e adiciona ao final da fila o Cliente
- passado. Saida: return 0 caso dê certo, e 1 caso dê errado.
+ passado. 
+ Saida: return 0 caso dê certo, e 1 caso dê errado.
  */
 int adiciona_cliente_fila(Fila_Cliente *fc, Cliente *c);
 
@@ -62,8 +64,8 @@ int adiciona_cliente_fila(Fila_Cliente *fc, Cliente *c);
  Nome: remove_cliente_fila
  Entrada: Ponteiro do tipo Fila_Cliente e um ponteiro do tipo Cliente.
  Processo: Testa validade dos ponteiros,e retira o cliente da fila atraves da
- primeira posicao, sendo assim, respeitando o conceito FIFO das filas. Saida:
- return 0 caso dê certo, e 1 caso dê errado.
+ primeira posicao, sendo assim, respeitando o conceito FIFO das filas. 
+ Saida: return 0 caso dê certo, e 1 caso dê errado.
  */
 int remove_cliente_fila(Fila_Cliente *fc, Cliente *cliente_retorno);
 
