@@ -37,6 +37,17 @@ int adiciona_item_comanda(Comanda *comanda, Produto *produto) {
 	return 0;
 }
 
+int remove_item_comanda(Comanda *comanda, Produto *retorno_produto, int id) {
+
+	if (comanda == NULL || retorno_produto == NULL) {
+		return 1;
+	}
+	int status = remove_da_lista(comanda->lista, retorno_produto, id);
+	if (status != 0)
+		return 1;
+	return 0;
+}
+
 int soma_valor_comanda(Comanda *comanda, float *resultado) {
 	// testa se ponteiro eh valido
 	if (comanda == NULL || resultado == NULL) {
