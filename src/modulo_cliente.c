@@ -105,7 +105,7 @@ int incluir_clientes_fila(Fila_Cliente *fila_cliente, Cardapio *cardapio) {
 int atender_cliente(Fila_Cliente *fila_cliente,
 					Pilha_Chocolate *pilha_chocolate) {
 	// testa se ponteiro eh valido
-	if (fila_cliente == NULL) {
+	if (fila_cliente == NULL || pilha_chocolate == NULL) {
 		printf("ponteiro fila_cliente invalido em funcao "
 			   "atender_cliente\n");
 		return 1;
@@ -115,20 +115,20 @@ int atender_cliente(Fila_Cliente *fila_cliente,
 		printf("fila de clientes vazia\n");
 		return 0;
 	}
-	Node_Fila *node_atual = fila_cliente->fila->primeiro;
-	if (node_atual == NULL) {
-		printf("erro ponteiro node_atual invalido em funcao "
-			   "atender_cliente\n");
+	Cliente *cliente;
+	cliente = (Cliente *)malloc(sizeof(Cliente));
+	status = remove_cliente_fila(fila_cliente, cliente);
+	if (status != 0) {
+		printf("erro em remove_cliente_fila em funcao atender_cliente\n");
 		return 1;
 	}
-	Cliente *cliente = (Cliente *)node_atual->dados;
 	Comanda *comanda = cliente->comanda;
 	float soma_comanda_cliente;
 	soma_valor_comanda(comanda, &soma_comanda_cliente);
 
 	printf("cliente nome: %s\n", cliente->nome);
 	printf("valor total comanda cliente: %f\n", soma_comanda_cliente);
-	if (pilha_chocolate != NULL) {
+	if (pilha_chocolate->pilha->tamanho_pilha != 0) {
 		Chocolate *chocolate;
 		chocolate = (Chocolate *)malloc(sizeof(Chocolate));
 		status = desempilha_chocolate(pilha_chocolate, chocolate);
