@@ -18,6 +18,40 @@ disciplina Estrutura de dados (GSI006) BSI - Facom - UFU Restricoes:
 #include <stdio.h>
 #include <stdlib.h>
 
+int leitura_produto(Produto *produto_retorno) {
+	// testa se ponteiro eh valido
+	if (produto_retorno == NULL) {
+		return 1;
+	}
+	int id, tam_nome = 15, status;
+	char *nome;
+	float preco;
+	produto_retorno = NULL;
+
+	printf("ID do produto: \n");
+	scanf("%d", &id);
+
+	nome = (char *)malloc(sizeof(char) * tam_nome);
+	if (nome == NULL) {
+		printf("nao foi alocado..\n");
+		return 1;
+	}
+	printf("Nome do produto: \n");
+	if (scanf("%s", nome) != 1)
+		return 1;
+
+	printf("Preco produto: \n");
+	scanf("%f", &preco);
+
+	status = inicializa_produto(produto_retorno, id, nome, tam_nome, preco);
+	if (status != 0) {
+		printf("Erro em inicializa_produto em funcao inserir_itens_cardapio");
+		return 1;
+	}
+
+	return 0;
+}
+
 int inserir_itens_cardapio(Cardapio *c) {
 	int id, tam_nome = 15, status;
 	char *nome;
