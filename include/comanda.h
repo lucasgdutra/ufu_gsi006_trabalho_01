@@ -24,7 +24,8 @@ typedef struct comanda {
  Nome: inicializa_comanda
  Entrada: Ponteiro do tipo Comanda.
  Processo: testa validadade do ponteiro, depois aloca memoria da lista, e faz
- ela apontar pra struct comanda Saida: return 0 caso dê certo, e 1 caso dê
+ ela apontar pra struct comanda 
+ Saida: return 0 caso dê certo, e 1 caso dê
  errado.
  */
 int inicializa_comanda(Comanda *comanda);
@@ -33,7 +34,8 @@ int inicializa_comanda(Comanda *comanda);
  Nome: adiciona_item_comanda
  Entrada: Ponteiro do tipo Comanda e o ponteiro do Produto que sera adicionado.
  Processo: Testa validadade dos ponteiros, posteriormente, adiciona na lista o
- Produto recebido Saida: return 0 caso dê certo, e 1 caso dê errado.
+ Produto recebido 
+ Saida: return 0 caso dê certo, e 1 caso dê errado.
  */
 int adiciona_item_comanda(Comanda *comanda, Produto *p);
 
@@ -44,7 +46,8 @@ int adiciona_item_comanda(Comanda *comanda, Produto *p);
  uma lista encadeada, criamos um node e apontamos para o primemiro node, e
  varremos até que o proximo node seja NULO, condi- ção de parada para sair do
  laço, enquanto isso, o valor vai sendo acumulado na variavel soma que dps é
- atribuido para o ponteiro resultado. Saida: return 0 caso dê certo, e 1 caso dê
+ atribuido para o ponteiro resultado. 
+ Saida: return 0 caso dê certo, e 1 caso dê
  errado.
  */
 int soma_valor_comanda(Comanda *comanda, float *resultado);
