@@ -52,18 +52,18 @@ int leitura_produto(Produto *produto_retorno) {
 	return 0;
 }
 
-int inserir_itens_cardapio(Cardapio *c) {
+int inserir_itens_cardapio(Cardapio *cardapio) {
 	int status;
-	Produto *p;
-	p = (Produto *)malloc(sizeof(Produto));
-	if (p == NULL) {
+	Produto *produto;
+	produto = (Produto *)malloc(sizeof(Produto));
+	if (produto == NULL) {
 		printf("Erro ao alocar produto em funcao inserir_itens_cardapio\n");
 		return 1;
 	}
 
-	leitura_produto(p);
+	leitura_produto(produto);
 
-	status = adiciona_item_cardapio(c, p);
+	status = adiciona_item_cardapio(cardapio, produto);
 	if (status != 0) {
 		printf("Erro adiciona_item_cardapio em funcao inserir_itens_cardapio");
 		return 1;
@@ -73,8 +73,9 @@ int inserir_itens_cardapio(Cardapio *c) {
 	return 0;
 }
 
-int inserir_chocolates_pilha(Pilha_Chocolate *pc) {
-	Chocolate c;
+int inserir_chocolates_pilha(Pilha_Chocolate *pilha_chocolate) {
+	Chocolate *chocolate;
+	chocolate = (Chocolate *)malloc(sizeof(Chocolate));
 	char *nome;
 	int tamanho_nome = 15;
 
@@ -88,8 +89,8 @@ int inserir_chocolates_pilha(Pilha_Chocolate *pc) {
 	if (scanf("%s", nome) != 1)
 		return 1;
 
-	inicializa_chocolate(&c, nome, tamanho_nome);
-	empilha_chocolate(pc, &c);
+	inicializa_chocolate(chocolate, nome, tamanho_nome);
+	empilha_chocolate(pilha_chocolate, chocolate);
 
 	return 0;
 }
@@ -106,9 +107,9 @@ int atender_cliente() {
 	return 0;
 }
 
-int imprimir_cardapio(Cardapio *c) {
+int imprimir_cardapio(Cardapio *cardapio) {
 
-	mostrar_cardapio(c);
+	mostrar_cardapio(cardapio);
 
 	return 0;
 }
@@ -135,11 +136,11 @@ int print_menu(int *opcao) {
 }
 
 int main() {
-	Pilha_Chocolate pc;
-	Cardapio c;
+	Pilha_Chocolate pilha_chocolate;
+	Cardapio cardapio;
 
-	inicializa_pilha_chocolate(&pc);
-	inicializa_cardapio(&c);
+	inicializa_pilha_chocolate(&pilha_chocolate);
+	inicializa_cardapio(&cardapio);
 
 	int opcao;
 	while (true) {
@@ -150,10 +151,10 @@ int main() {
 				return 0;
 				break;
 			case 1:
-				inserir_itens_cardapio(&c);
+				inserir_itens_cardapio(&cardapio);
 				break;
 			case 2:
-				inserir_chocolates_pilha(&pc);
+				inserir_chocolates_pilha(&pilha_chocolate);
 				break;
 			case 3:
 				incluir_clientes_fila();
@@ -162,10 +163,10 @@ int main() {
 				atender_cliente();
 				break;
 			case 5:
-				imprimir_cardapio(&c);
+				imprimir_cardapio(&cardapio);
 				break;
 			case 6:
-				imprime_chocolate(&pc);
+				imprime_chocolate(&pilha_chocolate);
 				break;
 			case 7:
 				imprimir_fila_clientes();
