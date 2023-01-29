@@ -14,6 +14,8 @@ int adiciona_item_cardapio(Cardapio *cardapio, Produto *p);
 
 int remove_item_cardapio(Cardapio *cardapio, Produto *retorno_produto, int id);
 
+int retorna_tamanho_cardapio(Cardapio *cardapio, int *retorno_tamanho);
+
 int mostrar_cardapio(Cardapio *cardapio);
 
 #endif
