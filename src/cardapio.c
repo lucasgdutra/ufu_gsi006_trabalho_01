@@ -37,6 +37,15 @@ int remove_item_cardapio(Cardapio *cardapio, Produto *retorno_produto, int id) {
 	return 0;
 }
 
+int retorna_tamanho_cardapio(Cardapio *cardapio, int *retorno_tamanho) {
+	// testa se ponteiro eh valido
+	if (cardapio == NULL || retorno_tamanho == NULL) {
+		return 1;
+	}
+	*retorno_tamanho = cardapio->lista->tamanho_lista;
+	return 0;
+}
+
 int mostrar_cardapio(Cardapio *cardapio) {
 	// testa se ponteiro eh valido
 	if (cardapio == NULL) {
