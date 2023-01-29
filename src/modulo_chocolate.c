@@ -47,7 +47,7 @@ int imprime_pilha_chocolate(Pilha_Chocolate *pc) {
 	}
 	// verifica se a pilha ta vazia..
 	if (pc->pilha->tamanho_pilha == 0) {
-		printf("Pilha vazia...\n");
+		printf("Pilha de chocolates vazia\n");
 	}
 
 	// varre a pilha pelo topo e depois passa para o proximo node até chegar no
