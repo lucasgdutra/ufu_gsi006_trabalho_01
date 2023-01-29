@@ -280,9 +280,18 @@ int main() {
 			case 2:
 				inserir_chocolates_pilha(&pilha_chocolate);
 				break;
-			case 3:
-				incluir_clientes_fila(&fila_cliente);
-				break;
+			case 3: {
+				int tamanho_cardapio;
+				retorna_tamanho_cardapio(&cardapio, &tamanho_cardapio);
+				if (tamanho_cardapio != 0) {
+					incluir_clientes_fila(&fila_cliente);
+				} else {
+					printf("Eh necessario ter itens no cardapio para incluir "
+						   "clientes na fila");
+				}
+			}
+
+			break;
 			case 4:
 				atender_cliente(&fila_cliente);
 				break;
