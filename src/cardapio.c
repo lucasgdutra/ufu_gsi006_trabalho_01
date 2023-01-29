@@ -64,3 +64,17 @@ int mostrar_cardapio(Cardapio *cardapio) {
 	}
 	return 0;
 }
+
+int buscar_item_cardapio(Cardapio *cardapio, int posicao,
+						 Produto *retorno_produto) {
+	// testa se ponteiro eh valido
+	if (cardapio == NULL || retorno_produto == NULL) {
+		return 1;
+	}
+	int status;
+	status = buscar_item_lista(cardapio->lista, posicao, retorno_produto);
+	if (status != 0) {
+		return 1;
+	}
+	return 0;
+}
