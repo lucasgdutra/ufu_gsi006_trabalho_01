@@ -151,3 +151,33 @@ int retorna_tamanho_lista(Lista_Ordenada *lista, int *tam) {
 	*tam = lista->tamanho_lista;
 	return 0;
 }
+
+int buscar_item_lista(Lista_Ordenada *lista, int posicao, void *retorno_dados) {
+	// testa se ponteiro eh valido
+	if (lista == NULL || retorno_dados == NULL) {
+		return 1;
+	}
+	Node_Lista *node_atual = lista->primeiro;
+	if (node_atual == NULL) {
+		// lista vazia
+		return 1;
+	}
+	while (true) {
+		if (node_atual == NULL) {
+			// node_atual chegou ao final da lista, item nao encontrado
+			return 1;
+		}
+		if (node_atual->pos == posicao) {
+			memcpy(retorno_dados, node_atual->dados,
+				   lista->tamanho_estrutura_dados);
+			return 0;
+		}
+		if (posicao > node_atual->pos) {
+			// como a lista eh ordenada, se a posicao da busca for maior que a
+			// posicao atual entao a posicao da busca nao existe
+			return 1;
+		}
+		node_atual = node_atual->proximo_node;
+	}
+	return 0;
+}
