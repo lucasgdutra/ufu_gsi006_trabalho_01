@@ -27,7 +27,6 @@ int leitura_produto(Produto *produto_retorno) {
 	int id, tam_nome = 15, status;
 	char *nome;
 	float preco;
-	produto_retorno = NULL;
 
 	printf("ID do produto: \n");
 	scanf("%d", &id);
@@ -182,9 +181,9 @@ int incluir_clientes_fila(Fila_Cliente *fila_cliente) {
 			break;
 		}
 		if (entrada == 1) {
-			status = inicializa_comanda(comanda);
+			status = inserir_itens_comanda(comanda);
 			if (status != 0) {
-				printf("Erro inicializa_comanda em funcao "
+				printf("Erro inserir_itens_comanda em funcao "
 					   "incluir_clientes_fila\n");
 				return 1;
 			}
