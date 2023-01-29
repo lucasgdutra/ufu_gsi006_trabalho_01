@@ -142,6 +142,8 @@ int inserir_itens_comanda(Comanda *comanda) {
 int incluir_clientes_fila(Fila_Cliente *fila_cliente) {
 	// testa se ponteiro eh valido
 	if (fila_cliente == NULL) {
+		printf(
+			"ponteiro fila_cliente em funcao incluir_clientes_fila invalido");
 		return 1;
 	}
 	int status, tamanho_nome = 30, entrada;
