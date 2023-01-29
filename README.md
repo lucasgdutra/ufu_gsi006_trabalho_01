@@ -33,6 +33,30 @@ Arquivos fonte de módulos e TAD´s localizados em pasta src
 
 Arquivos de cabeçalho localizados em pasta include
 
+## Etapas de desenvolvimento
+### Criação de TAD´s
+* Criar TAD Lista Ordenada, com lista encadeada
+* Criar TAD Pilha, com lista encadeada
+* Criar TAD Fila, com lista encadeada
+
+### Criação de Struct´s
+* Criar Struct Produto
+* Criar Struct Cardápio com lista de Produtos
+* Criar Struct Comanda com lista de Produtos
+* Criar Struct Cliente com Comanda
+* Criar Struct Fila de Clientes
+* Criar Struct Chocolate
+* Criar Struct Pilha de Chocolates
+
+### Criação de Módulos
+* Criar Módulo Cardápio
+* Criar Módulo Chocolate
+* Criar Módulo Clientes
+
+### Criação de Teste
+* Criar Testes unitários para cada TAD
+* Criar Teste do programa principal
+
 ## Apresentação do programa
 
 link para apresentação do programa em vídeo: [link](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
