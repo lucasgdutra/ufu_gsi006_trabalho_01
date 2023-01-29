@@ -172,9 +172,9 @@ int buscar_item_lista(Lista_Ordenada *lista, int posicao, void *retorno_dados) {
 				   lista->tamanho_estrutura_dados);
 			return 0;
 		}
-		if (posicao > node_atual->pos) {
-			// como a lista eh ordenada, se a posicao da busca for maior que a
-			// posicao atual entao a posicao da busca nao existe
+		if (posicao < node_atual->pos) {
+			// como a lista eh ordenada, se a posicao da busca for menor que a
+			// posicao atual entao a posicao da busca já passou e nao existe
 			return 1;
 		}
 		node_atual = node_atual->proximo_node;

@@ -20,7 +20,8 @@ int inserir_itens_comanda(Comanda *comanda, Cardapio *cardapio) {
 	scanf("%d", &id);
 	status = buscar_item_cardapio(cardapio, id, produto);
 	if (status != 0) {
-		printf("erro em buscar_item_cardapio em funcao inserir_itens_comanda");
+		printf(
+			"erro em buscar_item_cardapio em funcao inserir_itens_comanda\n");
 	}
 	status = adiciona_item_comanda(comanda, produto);
 	if (status != 0) {
