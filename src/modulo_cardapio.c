@@ -11,19 +11,26 @@ int leitura_produto(Produto *produto_retorno) {
 	}
 	int id, tam_nome = 15, status;
 	char *nome;
+	char *buffer;
 	float preco;
 
 	printf("ID do produto: \n");
 	scanf("%d", &id);
 
 	nome = (char *)malloc(sizeof(char) * tam_nome);
+	buffer = (char *)malloc(sizeof(char) * (tam_nome + 1));
 	if (nome == NULL) {
 		printf("nao foi alocado..\n");
 		return 1;
 	}
 	printf("Nome do produto: \n");
-	if (scanf("%s", nome) != 1)
+	getchar();
+	if (fgets(buffer, tam_nome, stdin) == NULL)
 		return 1;
+	// remove \n da string se existir
+	buffer[strcspn(buffer, "\n")] = 0;
+	memcpy(nome, buffer, tam_nome);
+	free(buffer);
 
 	printf("Preco produto: \n");
 	scanf("%f", &preco);

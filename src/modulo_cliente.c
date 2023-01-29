@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int inserir_itens_comanda(Comanda *comanda, Cardapio *cardapio) {
 	// testa se ponteiro eh valido
@@ -41,7 +42,11 @@ int incluir_clientes_fila(Fila_Cliente *fila_cliente, Cardapio *cardapio) {
 		return 1;
 	}
 	int status, tamanho_nome = 30, entrada;
+	char *buffer;
 	char *nome;
+
+	buffer = (char *)malloc(sizeof(char) * (tamanho_nome + 1));
+	nome = (char *)malloc(sizeof(char) * tamanho_nome);
 
 	Cliente *cliente;
 	Comanda *comanda;
@@ -49,14 +54,20 @@ int incluir_clientes_fila(Fila_Cliente *fila_cliente, Cardapio *cardapio) {
 	cliente = (Cliente *)malloc(sizeof(Cliente));
 	comanda = (Comanda *)malloc(sizeof(Comanda));
 
-	nome = (char *)malloc(sizeof(char) * tamanho_nome);
 	if (nome == NULL) {
 		printf("Erro ao alocar nome em funcao incluir_clientes_fila\n");
 		return 1;
 	}
 
 	printf("Digite o nome do cliente\n");
-	scanf("%s", nome);
+	getchar();
+	if (fgets(buffer, tamanho_nome, stdin) == NULL)
+		return 1;
+	// remove \n da string se existir
+	buffer[strcspn(buffer, "\n")] = 0;
+	memcpy(nome, buffer, tamanho_nome);
+
+	free(buffer);
 
 	status = inicializa_comanda(comanda);
 	if (status != 0) {

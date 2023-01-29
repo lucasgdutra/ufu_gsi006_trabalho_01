@@ -13,17 +13,24 @@ int inserir_chocolates_pilha(Pilha_Chocolate *pilha_chocolate) {
 
 	chocolate = (Chocolate *)malloc(sizeof(Chocolate));
 	char *nome;
+	char *buffer;
 	int tamanho_nome = 15;
 
 	nome = (char *)malloc(sizeof(char) * tamanho_nome);
+	buffer = (char *)malloc(sizeof(char) * (tamanho_nome + 1));
 	if (nome == NULL) {
 		printf("nao foi alocado..\n");
 		return 1;
 	}
 
 	printf("Insira o chocolate: \n");
-	if (scanf("%s", nome) != 1)
+	getchar();
+	if (fgets(buffer, tamanho_nome, stdin) == NULL)
 		return 1;
+	// remove \n da string se existir
+	buffer[strcspn(buffer, "\n")] = 0;
+	memcpy(nome, buffer, tamanho_nome);
+	free(buffer);
 
 	status = inicializa_chocolate(chocolate, nome, tamanho_nome);
 	if (status != 0) {
