@@ -43,6 +43,7 @@ compile_test:	all\
 	$(TEST)/cardapio.test\
 	$(TEST)/chocolate.test\
 	$(TEST)/comanda.test\
+	$(TEST)/cliente.test
 
 $(TEST)/%.test:	$(TEST)/%.c
 	$(CC) $(CFLAGS) $< $(OBJ)/*.o -o $@
@@ -53,7 +54,8 @@ test:	$(TEST)/lista.run_test\
 	$(TEST)/produto.run_test\
 	$(TEST)/cardapio.run_test\
 	$(TEST)/chocolate.run_test\
-	$(TEST)/comanda.run_test
+	$(TEST)/comanda.run_test\
+	$(TEST)/cliente.run_test
 
 $(TEST)/%.run_test:	compile_test $(TEST)/%.test $(TEST)/%.in $(TEST)/%.out
 	-diff <($(word 2,$^) < $(word 3,$^))  $(word 4,$^)
