@@ -116,19 +116,22 @@ int inserir_chocolates_pilha(Pilha_Chocolate *pilha_chocolate) {
 	return 0;
 }
 
-int inserir_itens_comanda(Comanda *comanda) {
+int inserir_itens_comanda(Comanda *comanda, Cardapio *cardapio) {
 	// testa se ponteiro eh valido
-	if (comanda == NULL) {
+	if (comanda == NULL || cardapio == NULL) {
+		printf("ponteiro comanda ou cardapio em funcao inserir_itens_comanda "
+			   "invalido");
 		return 1;
 	}
-	int status;
+	int status, id;
 	Produto *produto;
 	produto = (Produto *)malloc(sizeof(Produto));
-
-	status = leitura_produto(produto);
+	imprimir_cardapio(cardapio);
+	printf("Digite o ID do produto a ser incluido na comanda\n");
+	scanf("%d", &id);
+	status = buscar_item_cardapio(cardapio, id, produto);
 	if (status != 0) {
-		printf("Erro leitura_produto em funcao inserir_itens_comanda\n");
-		return 1;
+		printf("erro em buscar_item_cardapio em funcao inserir_itens_comanda");
 	}
 	status = adiciona_item_comanda(comanda, produto);
 	if (status != 0) {
@@ -140,11 +143,11 @@ int inserir_itens_comanda(Comanda *comanda) {
 	return 0;
 }
 
-int incluir_clientes_fila(Fila_Cliente *fila_cliente) {
+int incluir_clientes_fila(Fila_Cliente *fila_cliente, Cardapio *cardapio) {
 	// testa se ponteiro eh valido
-	if (fila_cliente == NULL) {
-		printf(
-			"ponteiro fila_cliente em funcao incluir_clientes_fila invalido");
+	if (fila_cliente == NULL || cardapio == NULL) {
+		printf("ponteiro fila_cliente ou cardapio em funcao "
+			   "incluir_clientes_fila invalido");
 		return 1;
 	}
 	int status, tamanho_nome = 30, entrada;
@@ -170,7 +173,7 @@ int incluir_clientes_fila(Fila_Cliente *fila_cliente) {
 		printf("Erro inicializa_comanda em funcao incluir_clientes_fila\n");
 		return 1;
 	}
-	status = inserir_itens_comanda(comanda);
+	status = inserir_itens_comanda(comanda, cardapio);
 	if (status != 0) {
 		printf("Erro inserir_itens_comanda em funcao incluir_clientes_fila\n");
 		return 1;
@@ -184,7 +187,7 @@ int incluir_clientes_fila(Fila_Cliente *fila_cliente) {
 			break;
 		}
 		if (entrada == 1) {
-			status = inserir_itens_comanda(comanda);
+			status = inserir_itens_comanda(comanda, cardapio);
 			if (status != 0) {
 				printf("Erro inserir_itens_comanda em funcao "
 					   "incluir_clientes_fila\n");
@@ -285,7 +288,7 @@ int main() {
 				int tamanho_cardapio;
 				retorna_tamanho_cardapio(&cardapio, &tamanho_cardapio);
 				if (tamanho_cardapio != 0) {
-					incluir_clientes_fila(&fila_cliente);
+					incluir_clientes_fila(&fila_cliente, &cardapio);
 				} else {
 					printf("Eh necessario ter itens no cardapio para incluir "
 						   "clientes na fila");
