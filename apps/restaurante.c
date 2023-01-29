@@ -53,6 +53,10 @@ int leitura_produto(Produto *produto_retorno) {
 }
 
 int inserir_itens_cardapio(Cardapio *cardapio) {
+	// testa se ponteiro eh valido
+	if (cardapio == NULL) {
+		return 1;
+	}
 	int status;
 	Produto *produto;
 	produto = (Produto *)malloc(sizeof(Produto));
@@ -74,7 +78,13 @@ int inserir_itens_cardapio(Cardapio *cardapio) {
 }
 
 int inserir_chocolates_pilha(Pilha_Chocolate *pilha_chocolate) {
+	// testa se ponteiro eh valido
+	if (pilha_chocolate == NULL) {
+		return 1;
+	}
 	Chocolate *chocolate;
+	int status;
+
 	chocolate = (Chocolate *)malloc(sizeof(Chocolate));
 	char *nome;
 	int tamanho_nome = 15;
@@ -89,9 +99,17 @@ int inserir_chocolates_pilha(Pilha_Chocolate *pilha_chocolate) {
 	if (scanf("%s", nome) != 1)
 		return 1;
 
-	inicializa_chocolate(chocolate, nome, tamanho_nome);
-	empilha_chocolate(pilha_chocolate, chocolate);
-
+	status = inicializa_chocolate(chocolate, nome, tamanho_nome);
+	if (status != 0) {
+		printf(
+			"erro em inicializa_chocolate em funcao inserir_chocolates_pilha");
+		return 1;
+	}
+	status = empilha_chocolate(pilha_chocolate, chocolate);
+	if (status != 0) {
+		printf("erro em empilha_chocolate em funcao inserir_chocolates_pilha");
+		return 1;
+	}
 	return 0;
 }
 
@@ -108,7 +126,10 @@ int atender_cliente() {
 }
 
 int imprimir_cardapio(Cardapio *cardapio) {
-
+	// testa se ponteiro eh valido
+	if (cardapio == NULL) {
+		return 1;
+	}
 	mostrar_cardapio(cardapio);
 
 	return 0;
@@ -120,6 +141,10 @@ int imprimir_fila_clientes() {
 }
 
 int print_menu(int *opcao) {
+	// testa se ponteiro eh valido
+	if (opcao == NULL) {
+		return 1;
+	}
 	printf("\n");
 	printf("Escolha uma das opções do menu\n");
 	printf("0 - Sair do programa\n");
