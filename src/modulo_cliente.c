@@ -114,7 +114,41 @@ int imprimir_fila_clientes(Fila_Cliente *fila_cliente) {
 	// testa se ponteiro eh valido
 	if (fila_cliente == NULL) {
 		return 1;
+		printf("Ponteiro fila_cliente invalido em funcao "
+			   "imprimir_fila_clientes\n");
 	}
-	printf("em desenvolvimento..\n");
+	if (fila_cliente->fila->tamanho_fila == 0) {
+		printf("Fila de clientes vazia\n");
+		return 0;
+	}
+	Node_Fila *node_atual;
+	node_atual = fila_cliente->fila->primeiro;
+	while (true) {
+		if (node_atual == NULL) {
+			break;
+		}
+		Cliente *cliente = (Cliente *)node_atual->dados;
+		printf("cliente nome: %s\n", cliente->nome);
+
+		Comanda *comanda = (Comanda *)cliente->comanda;
+		if (comanda->lista->tamanho_lista == 0) {
+			printf("Comanda do cliente %s vazia\n", cliente->nome);
+		} else {
+			printf("Comanda:\n");
+			Node_Lista *node_atual_comanda = comanda->lista->primeiro;
+			while (true) {
+				if (node_atual_comanda == NULL) {
+					break;
+				}
+				Produto *produto = (Produto *)node_atual_comanda->dados;
+				printf("produto id: %d, produto nome: %s, produto preço: %f\n",
+					   produto->id, produto->nome, produto->preco);
+				node_atual_comanda = node_atual_comanda->proximo_node;
+			}
+		}
+
+		node_atual = node_atual->proximo_node;
+	}
+
 	return 0;
 }
