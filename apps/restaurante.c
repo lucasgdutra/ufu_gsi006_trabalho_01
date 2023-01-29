@@ -53,9 +53,7 @@ int leitura_produto(Produto *produto_retorno) {
 }
 
 int inserir_itens_cardapio(Cardapio *c) {
-	int id, tam_nome = 15, status;
-	char *nome;
-	float preco;
+	int status;
 	Produto *p;
 	p = (Produto *)malloc(sizeof(Produto));
 	if (p == NULL) {
@@ -63,26 +61,7 @@ int inserir_itens_cardapio(Cardapio *c) {
 		return 1;
 	}
 
-	printf("ID do produto: \n");
-	scanf("%d", &id);
-
-	nome = (char *)malloc(sizeof(char) * tam_nome);
-	if (nome == NULL) {
-		printf("nao foi alocado..\n");
-		return 1;
-	}
-	printf("Nome do produto: \n");
-	if (scanf("%s", nome) != 1)
-		return 1;
-
-	printf("Preco produto: \n");
-	scanf("%f", &preco);
-
-	status = inicializa_produto(p, id, nome, tam_nome, preco);
-	if (status != 0) {
-		printf("Erro em inicializa_produto em funcao inserir_itens_cardapio");
-		return 1;
-	}
+	leitura_produto(p);
 
 	status = adiciona_item_cardapio(c, p);
 	if (status != 0) {
